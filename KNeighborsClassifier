@@ -1,0 +1,78 @@
+import numpy as np
+from sklearn.neighbors import KNeighborsClassifier
+
+# Definir os dados e rótulos
+X = np.array([
+    #item1: mamifero se sim =1,
+    #item2: bipede se sim =1,
+    #item3: pele se sim =1,
+    [1, 1, 1],  # humano
+    [0, 0, 0],  # rato
+    [0, 1, 0],  # corvo
+    [0, 0, 1],  # porco
+    [0, 1, 0],  # pato
+    [1, 1, 0],  # macaco
+    [1, 0, 0],  # cachorro
+    [0, 0, 0],  # crocodilo
+    [1, 0, 1],  # leão
+    [1, 0, 1],  # tigre
+    [1, 0, 1],  # elefante
+    [1, 0, 1],  # girafa
+    [1, 0, 1],  # urso
+    [1, 0, 1],  # cavalo
+    [1, 0, 1],  # vaca
+    [1, 0, 1],  # ovelha
+    [1, 0, 1],  # cabra
+    [1, 0, 1],  # camelo
+    [0, 0, 1],  # hipopótamo
+    [0, 0, 1],  # rinoceronte
+    [0, 0, 0],  # tartaruga
+    [0, 0, 0],  # lagarto
+    [0, 0, 0],  # cobra
+    [0, 0, 0],  # iguana
+    [0, 1, 0],  # pinguim
+    [0, 1, 0],  # avestruz
+    [0, 1, 0],  # flamingo
+    [0, 1, 0],  # galinha
+    [0, 1, 0],  # galo
+    [0, 1, 0],  # peru
+    [0, 0, 0],  # sapo
+    [0, 0, 0],  # rã
+    [0, 0, 1],  # javali
+    [1, 1, 1],  # gorila
+    [1, 1, 1],  # chimpanzé
+    [0, 1, 0],  # pomba
+    [0, 1, 0],  # gaivota
+    [0, 1, 0],  # pardal
+    [0, 0, 0],  # peixe
+    [0, 0, 0],  # tubarão
+    [0, 0, 0],  # golfinho
+    [0, 0, 0],  # baleia
+    [1, 0, 0],  # lobo
+    [1, 0, 0],  # raposa
+    [1, 0, 0],  # coiote
+    [1, 0, 0],  # leopardo
+    [1, 0, 0],  # pantera
+    [1, 0, 0],  # jaguar
+    [1, 1, 1],  # orangotango
+    [1, 1, 1],  # babuíno
+])
+
+y = np.array([
+    'humano', 'rato', 'corvo', 'porco', 'pato', 'macaco', 'cachorro', 'crocodilo',
+    'leão', 'tigre', 'elefante', 'girafa', 'urso', 'cavalo', 'vaca', 'ovelha', 'cabra', 'camelo',
+    'hipopótamo', 'rinoceronte', 'tartaruga', 'lagarto', 'cobra', 'iguana', 'pinguim', 'avestruz',
+    'flamingo', 'galinha', 'galo', 'peru', 'sapo', 'rã', 'javali', 'gorila', 'chimpanzé', 'pomba',
+    'gaivota', 'pardal', 'peixe', 'tubarão', 'golfinho', 'baleia', 'lobo', 'raposa', 'coiote',
+    'leopardo', 'pantera', 'jaguar', 'orangotango', 'babuíno'
+])
+
+# Criar e treinar o modelo KNN
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X, y)
+
+# Fazer a previsão para a entrada [1, 1, 1]
+input_data = np.array([[1, 0, 1]])
+prediction = knn.predict(input_data)
+
+print("O animal é:", prediction[0])
